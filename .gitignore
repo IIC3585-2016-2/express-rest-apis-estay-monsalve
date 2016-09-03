@@ -1,0 +1,15 @@
+#Presentation#
+##############
+*.iml
+*.iws
+*.eml
+.DS_Store
+.svn
+presentation/.idea/
+presentation/out/
+presentation/log/*.log
+presentation/tmp/**
+presentation/node_modules/
+presentation/.sass-cache
+presentation/css/reveal.min.css
+presentation/js/reveal.min.js
