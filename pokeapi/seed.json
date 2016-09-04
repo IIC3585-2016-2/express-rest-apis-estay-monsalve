@@ -1,0 +1,5 @@
+{
+	"undefined": "localhost/pokeapi",
+	"dev": "localhost/pokeapi",
+	"prod": "localhost/pokeapi"
+}
