@@ -1,0 +1,28 @@
+{
+  "name": "pokeapi",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Basic express application that emulates a pokedex",
+  "scripts": {
+    "start": "nodemon ./bin/www -w ./"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "mongodb": "^1.4.4",
+    "mongoose": "^4.5.10",
+    "morgan": "~1.7.0",
+    "pug": "~2.0.0-beta5",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0"
+  }
+}
