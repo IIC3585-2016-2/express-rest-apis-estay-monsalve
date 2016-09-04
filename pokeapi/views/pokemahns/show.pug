@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1.text-center= pokemahn.name
+  .pokemahn.col-xs-12.text-center
+    p
+      img(src='../images/pokemahns/' + pokemahn.id + '.png')
+    p= '#' + pokemahn.id
+    p= pokemahn.name
+    p= 'Type: ' + pokemahn.type
+    p= 'HP: ' + pokemahn.hp
+    p= 'Attack: ' + pokemahn.attack
+    p= 'Defense: ' + pokemahn.defense
+    p= 'Speed: ' + pokemahn.speed
+    p= 'SA: ' + pokemahn.special_attack
+    p= 'SD: ' + pokemahn.special_defense
+    p= 'Evolve Level: ' + pokemahn.evolve_level
+    p= 'Moves'
+    ul
+      each attack in pokemahn.moves
+        li= attack

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var db = require('./model/db');
 var pokemahn = require('./model/pokemahns');
 var routes = require('./routes/index');
+var pokemahns = require('./routes/pokemahns');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/pokemahns', pokemahns);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1.text-center First Generation Pokemahn's
+  each pokemahn in pokemahns
+    .col-xs-12.col-sm-4.col-md-3.text-center
+      a(href='pokemahns/' + pokemahn.id)
+        .pokemahn
+          p
+            img(src='images/pokemahns/' + pokemahn.id + '.png')
+          p= '#' + pokemahn.id
+          p= pokemahn.name
+  .clearfix
+  .text-center
+    != pokemahns.pagination.render({ baseUrl: '/pokemahns' })
