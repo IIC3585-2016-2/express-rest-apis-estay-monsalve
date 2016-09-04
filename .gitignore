@@ -1,9 +1,19 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# npm
+node_modules
+*.log
+*.gz
+
+
 #Presentation#
 ##############
 *.iml
 *.iws
 *.eml
-.DS_Store
 .svn
 presentation/.idea/
 presentation/out/
