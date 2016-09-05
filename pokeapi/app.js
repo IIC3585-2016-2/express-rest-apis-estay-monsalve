@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/material-design-lite', express.static(__dirname + '/node_modules/material-design-lite/'));
 
 app.use('/', routes);
 app.use('/pokemahns', pokemahns);

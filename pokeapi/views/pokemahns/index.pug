@@ -1,15 +1,19 @@
 extends ../layout
 
+
 block content
   h1.text-center First Generation Pokemahn's
-  each pokemahn in pokemahns
-    .col-xs-12.col-sm-4.col-md-3.text-center
-      a(href='pokemahns/' + pokemahn.id)
-        .pokemahn
-          p
-            img(src='images/pokemahns/' + pokemahn.id + '.png')
-          p= '#' + pokemahn.id
-          p= pokemahn.name
+
+  .pokemahns
+    each pokemahn in pokemahns
+      .pokemahn-card.div.mdl-card.mdl-shadow--2dp
+        a(href='pokemahns/' + pokemahn.id)
+          .pokemahn-image
+            p
+              img(src='http://assets.pokemon.com/assets/cms2/img/pokedex/detail/'+pokemahn.id+'.png')
+          .pokemahn-name.mdl-card--border
+            span.id= '#' + pokemahn.id
+            span.name= pokemahn.name
   .clearfix
   .text-center
     != pokemahns.pagination.render({ baseUrl: '/pokemahns' })

@@ -20,7 +20,7 @@ router.route('/')
   .get(function(req, res, next) {
     res.format({
       html: function(){
-        mongoose.model('Pokemahn').find().sort({id: 'asc'}).paginate({ page: req.query.page, perPage: 12 }, function (err, pokemahns) {
+        mongoose.model('Pokemahn').find().sort({id: 'asc'}).paginate({ page: req.query.page, perPage: 12 }, (err, pokemahns) => {
           if (err) {
             return console.error(err);
           } else {
@@ -54,6 +54,7 @@ router.route('/')
     var evolve_level = req.body.evolve_level;
     var evolve_to = req.body.evolve_to;
     var moves = req.body.moves;
+
     mongoose.model('Pokemahn').create({
       name: name,
       type: type,
