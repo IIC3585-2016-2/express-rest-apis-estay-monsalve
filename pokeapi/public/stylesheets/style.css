@@ -1,10 +1,22 @@
 body {
-  padding: 50px;
+  /*padding-top: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   text-decoration: none;
+}
+
+nav {
+  /*background-color: red;*/
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content {
+  /*padding-top: 50px;*/
 }
 
 /*.pokemahn {
@@ -52,11 +64,13 @@ a .pokemahn:hover > p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
 }
 
 .pokemahn-card {
   margin: 10px;
-  width: 200px;
+  width: 240px;
   display: flex;
   flex-direction: column-reverse;
   /*align-items: center;*/
