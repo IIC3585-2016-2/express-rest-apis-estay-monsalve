@@ -1,0 +1,10 @@
+ .slides h1 {
+    /*font: 100 4.2em "Helvetica Neue","Open Sans",sans-serif !important;*/
+    text-transform: none;
+    font-weight: 100;
+    font-family: "Helvetica Neue","Open Sans",sans-serif;
+  }
+
+ .slides h2 {
+   text-transform: none;
+ }
