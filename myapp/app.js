@@ -88,21 +88,19 @@ app.put('/users/:username', upload.array(), (req, res, next) => {
     user[item] = req.body[item] ? req.body[item] : user[item];
   });
   res.format({
-    json: () => { res.json(users); }
+    json: () => { res.json(user); }
   });
 })
 
 app.delete('/users/:username', (req, res, next) => {
   const username = req.params.username;
   const user_index = users.findIndex(item => item.username === username );
-  console.log(username, user_index, users);
 
   if (user_index < 0) next();
   users.splice(user_index, 1);
 
-  res.format({
-    json: () => { res.json(users); }
-  });
+  res.status(204);
+  res.send();
 });
 
 
@@ -145,7 +143,7 @@ app.put('/pets/:name', upload.array(), (req, res, next) => {
     pet[item] = req.body[item] ? req.body[item] : pet[item];
   });
   res.format({
-    json: () => { res.json(pets); }
+    json: () => { res.json(pet); }
   });
 })
 
@@ -156,7 +154,6 @@ app.delete('/pets/:name', (req, res, next) => {
   if (pet_index < 0) next();
   pets.splice(pet_index, 1);
 
-  console.log(pets);
   res.format({
     json: () => { res.json(pets); }
   });
@@ -167,7 +164,7 @@ app.delete('/pets/:name', (req, res, next) => {
 app.get('/users/:username/pets', (req, res, next) => {
   const username = req.params.username;
   userPets = pets.filter(item => item.user === username);
-  console.log(username, userPets);
+
   if (!userPets) next();
   res.format({
     json: () => { res.json(userPets); }

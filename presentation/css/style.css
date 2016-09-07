@@ -7,11 +7,17 @@
 
  .slides h2 {
    text-transform: none;
+   color:rgb(34, 34, 34);
+   font-size:1.4em;
+   font-weight: 300;
+   font-family:
+   'Helvetica Neue','Open Sans',sans-serif;
  }
 
  .slides code {
    font-size: 22px;
    line-height: normal;
+   width: 100%;
  }
 
  .slides section img {
