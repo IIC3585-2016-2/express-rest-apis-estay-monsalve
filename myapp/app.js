@@ -8,6 +8,8 @@ const upload = multer();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 let users = [
   {
     username: 'nicole',
@@ -46,8 +48,32 @@ let pets = [
   },
 ]
 
+const userFormat = (req, user) => {
+  links = {
+    self: {
+      href: `${req.protocol}://${req.headers.host}/api/users/${user.username}`,
+    },
+    pets: {
+      href: `${req.protocol}://${req.headers.host}/api/users/${user.username}/pets`,
+    }
+  };
+  return _extends({}, user, { links });
+}
+
+const petFormat = (req, pet, user) => {
+  let links = {
+    self: {
+      href: `${req.protocol}://${req.headers.host}/api/pets/${pet.name}`,
+    },
+    user: {
+      href: `${req.protocol}://${req.headers.host}/api/users/${pet.user}`,
+    },
+  }
+  return _extends({}, pet, { links });
+}
+
 // Home
-app.get('/', (req, res, next) => {
+app.get('/api', (req, res, next) => {
   res.format({
     json: () => { res.json({}); }
   });
@@ -55,32 +81,40 @@ app.get('/', (req, res, next) => {
 
 
 // Users
-app.get('/users', (req, res, next) => {
+app.get('/api/users', (req, res, next) => {
+  const response = users.map(item => userFormat(req, item));
+
   res.format({
-    json: () => { res.json(users); }
+    json: () => { res.json(response); }
   });
 });
 
-app.post('/users', upload.array(), (req, res, next) => {
+app.post('/api/users', upload.array(), (req, res, next) => {
   const username = req.body.username;
   const name = req.body.name;
   const resource = { username, name };
   users.push(resource);
+
+  const response = userFormat(req, resource);
   res.format({
-    json: () => { res.json(users); }
+    json: () => {
+      res.status(201);
+      res.json(response);
+    }
   });
 })
 
-app.get('/users/:username', (req, res, next) => {
+app.get('/api/users/:username', (req, res, next) => {
   const username = req.params.username;
   const user = users.find(item => item.username === username );
   if (!user) next();
+
   res.format({
-    json: () => { res.json(user); }
+    json: () => { res.json(userFormat(req, user)); }
   });
 });
 
-app.put('/users/:username', upload.array(), (req, res, next) => {
+app.put('/api/users/:username', upload.array(), (req, res, next) => {
   const username = req.params.username;
   const user = users.find(item => item.username === username);
 
@@ -88,16 +122,16 @@ app.put('/users/:username', upload.array(), (req, res, next) => {
     user[item] = req.body[item] ? req.body[item] : user[item];
   });
   res.format({
-    json: () => { res.json(user); }
+    json: () => { res.json(userFormat(req, user)); }
   });
 })
 
-app.delete('/users/:username', (req, res, next) => {
+app.delete('/api/users/:username', (req, res, next) => {
   const username = req.params.username;
   const user_index = users.findIndex(item => item.username === username );
 
   if (user_index < 0) next();
-  users.splice(user_index, 1);
+  user = users.splice(user_index, 1);
 
   res.status(204);
   res.send();
@@ -105,13 +139,14 @@ app.delete('/users/:username', (req, res, next) => {
 
 
 // Pets
-app.get('/pets', (req, res, next) => {
+app.get('/api/pets', (req, res, next) => {
+  const response = pets.map(item => petFormat(req, item));
   res.format({
-    json: () => { res.json(pets); }
+    json: () => { res.json(response); }
   });
 });
 
-app.post('/pets', upload.array(), (req, res, next) => {
+app.post('/api/pets', upload.array(), (req, res, next) => {
   const name = req.body.name;
   const emoji = req.body.emoji;
   const user = users.find(item => req.body.user === item.username)
@@ -121,53 +156,64 @@ app.post('/pets', upload.array(), (req, res, next) => {
 
   pets.push(resource);
 
+  const response = petFormat(req, resource);
   res.format({
-    json: () => { res.json(pets); }
+    json: () => {
+      res.status(201);
+      res.json(response);
+    }
   });
 })
 
-app.get('/pets/:name', (req, res, next) => {
+app.get('/api/pets/:name', (req, res, next) => {
   const name = req.params.name;
   const pet = pets.find(item => item.name === name );
   if (!pet) next();
+
+  const response = petFormat(req, pet);
   res.format({
-    json: () => { res.json(pet); }
+    json: () => { res.json(response); }
   });
 });
 
-app.put('/pets/:name', upload.array(), (req, res, next) => {
+app.put('/api/pets/:name', upload.array(), (req, res, next) => {
   const name = req.params.name;
   const pet = pets.find(item => item.name === name);
 
   Object.keys(pet).forEach(item => {
     pet[item] = req.body[item] ? req.body[item] : pet[item];
   });
+
+  const response = petFormat(req, pet);
   res.format({
-    json: () => { res.json(pet); }
+    json: () => { res.json(response); }
   });
 })
 
-app.delete('/pets/:name', (req, res, next) => {
+app.delete('/api/pets/:name', (req, res, next) => {
   const name = req.params.name;
   const pet_index = pets.findIndex(item => item.name === name );
 
   if (pet_index < 0) next();
   pets.splice(pet_index, 1);
 
-  res.format({
-    json: () => { res.json(pets); }
-  });
+  res.status(204);
+  res.send();
 });
 
 
 // User - Pets
-app.get('/users/:username/pets', (req, res, next) => {
+app.get('/api/users/:username/pets', (req, res, next) => {
   const username = req.params.username;
-  userPets = pets.filter(item => item.user === username);
+  userPets = pets
+    .filter(item => item.user === username)
+    // .map(item => ({ name: item.name, emoji: item.emoji }));
 
   if (!userPets) next();
+
+  const response = userPets.map(item => petFormat(req, item));
   res.format({
-    json: () => { res.json(userPets); }
+    json: () => { res.json(response); }
   });
 });
 

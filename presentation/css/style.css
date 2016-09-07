@@ -23,6 +23,9 @@
  .slides section img {
    border: 0px;
  }
+ img#patu {
+  box-shadow: none;
+}
 
  #packagejson {
    font-size: 22px;

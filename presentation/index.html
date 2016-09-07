@@ -61,7 +61,7 @@
             </section>
             <section>
                 <section>
-                    <h2>Un pequeña api</h2>
+                    <h2>Un pequeña API</h2>
                     <div>
                         <img width="100%" height="100%" src="00.gif" />
                     </div>
@@ -89,11 +89,11 @@
 			              <h2>app.js</h2>
 			              <video id="video" data-autoplay class="stretch" src="video.mp4"></video>
 			              <aside class="notes">
-			                  Bodyparser: application/x-www-form-urlencoded Multer: multipart/form-data
+			                  	Bodyparser: application/x-www-form-urlencoded Multer: multipart/form-data
 			              </aside>
 			          </section>
 
-                <section>
+                <!-- <section>
                     <h2>app.js</h2>
                     <pre class="javascript"><code class="hljs" data-trim contenteditable>
 const express = require('express');
@@ -115,11 +115,14 @@ app.listen(3000, () => { console.log('👂🏽 on port 3000!'); });
                 </section>
                 <section>
                     <h2>app.js</h2>
-                    <pre><code class="hljs" data-trim contenteditable>
+                    <pre>
+											<code class="hljs" data-trim contenteditable>
 let users = [ { username: 'nicole', name: 'Nicole' }, ...]
 let pets = [ { name: 'oblina', emoji: '🐶', user: 'nicole' }, ...]
-                    </code></pre>
-                    <pre><code class="hljs" data-trim contenteditable>
+	                    </code>
+										</pre>
+                    <pre>
+											<code class="hljs" data-trim contenteditable>
 app.get('/', (req, res, next) => { ... });
 
 app.get('/users', (req, res, next) => {
@@ -133,53 +136,100 @@ app.get('/users/:username', (req, res, next) => {
   if (!user) next();
   res.format({ json: () => { res.json(user); } });
 });
-                    </code></pre>
-              </section>
+                    </code>
+									</pre>
+              </section> -->
             </section>
 						<section>
 							<h2>El objeto <strong>req</strong></h2>
 							<ul>
-								<li>params
-									<pre><code class="hljs" contenteditable>
+								<li>params</li>
+									<pre class="javascript"><code class="hljs" contenteditable>
 app.get('/users/:username', (req, res) => {
 
 const username = req.params.username;
-...
+
 });
 									</code></pre>
-								</li>
-								<li>body
-									<pre><code class="hljs" contenteditable>
+								<li>body</li>
+									<pre class="javascript"><code class="hljs" contenteditable>
 app.post('/users', upload.array(), (req, res) => {
 
 const username = req.body.username;
-...
+
 });
 									</code></pre>
-								</li>
 							</ul>
 						</section>
 						<section>
 							<h2>El objeto <strong>res</strong></h2>
 							<ul>
-								<li>send
-									<pre><code class="hljs" contenteditable>
+								<li>send</li>
+									<pre class="javascript"><code class="hljs" contenteditable>
 app.get('/', (req, res, next) => {
   res.send("Hello world");
 });
 									</code></pre>
-								</li>
-								<li>format
-									<pre><code class="hljs" contenteditable>
+								<li>format</li>
+									<pre class="javascript"><code class="hljs" contenteditable>
 app.get('/', (req, res, next) => {
   res.format({
-    html: () => { ... }
-    json: () => { res.json({}); }
+    html: () => { ... },
+    json: () => { res.json({}); },
   });
 });
 									</code></pre>
-								</li>
 							</ul>
+						</section>
+						<section>
+							<section>
+								<div>
+										<img id="patu" src="patu.png" />
+								</div>
+								<h2>HATEOAS</h2>
+							</section>
+							<section>
+								<div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
+										<h2 style="color:rgb(34, 34, 34); font-size:1.4em; font-weight: 300; font-family: 'Helvetica Neue','Open Sans',sans-serif;">
+												<strong>H</strong>ypermedia
+												<strong>A</strong>s
+												<strong>T</strong>he
+												<strong>E</strong>ngine
+												<strong>O</strong>f
+												<strong>A</strong>pplication
+												<strong>S</strong>tate
+										</h2>
+								</div>
+                <pre class="javascript"><code class="hljs" contenteditable>
+const userFormat = (req, user) => {
+  links = {
+    self: {
+      href: `${req.protocol}://${req.headers.host}/api/users/${user.username}`,
+    },
+  };
+  return _extends({}, user, { links });
+}
+                </code></pre>
+                <pre class="javascript"><code class="hljs" contenteditable>
+app.get('/api/users', (req, res, next) => {
+  const response = users.map(item => userFormat(req, item));
+
+  res.format({
+    json: () => { res.json(response); }
+  });
+});
+                </code></pre>
+                <aside class="notes">
+                  The principle is that a client interacts with a network application entirely
+                  through hypermedia provided dynamically by application servers
+                </aside>
+							</section>
+						</section>
+						<section>
+							<div>
+									<img width="300" height="300" src="pusheen.gif" />
+							</div>
+							<h2>Una API en acción </h2>
 						</section>
         </div>
     </div>
