@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
-const multer = require('multer');
-const upload = multer();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,7 +57,7 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.post('/users', upload.array(), (req, res) => {
+app.post('/users', (req, res) => {
   const username = req.body.username;
   const name = req.body.name;
   const resource = { username, name };
@@ -78,12 +76,11 @@ app.get('/users/:username', (req, res) => {
   });
 });
 
-app.put('/users/:username', upload.array(), (req, res) => {
+app.put('/users/:username', (req, res) => {
   const username = req.params.username;
   const user = users.find(item => item.username === username);
 
   req.body.forEach(item => user[item] = req.body[item]);
-  // actualizar el user en el arreglo
   res.format({
     json: () => { res.json(users); }
   });
@@ -95,7 +92,7 @@ app.get('/pets', (req, res) => {
   });
 });
 
-app.post('/pets', upload.array(), (req, res) => {
+app.post('/pets', (req, res) => {
   const name = req.body.name;
   const emoji = req.body.emoji;
   const user = users.find(item => req.body.user === item.username)

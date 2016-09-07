@@ -1,0 +1,38 @@
+html	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^<html>$/;"	function	line:2
+head	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^	<head>$/;"	function	line:3
+meta	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<meta charset="utf-8">$/;"	function	line:4
+meta	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">$/;"	function	line:5
+title	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<title>reveal.js<\/title>$/;"	function	line:7
+link	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<link rel="stylesheet" href="css\/reveal.css">$/;"	function	line:9
+link	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<link rel="stylesheet" href="css\/theme\/white.css" id="theme">$/;"	function	line:10
+link	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<link rel="stylesheet" href="lib\/css\/zenburn.css">$/;"	function	line:13
+link	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<link rel="stylesheet" href="css\/style.css">$/;"	function	line:15
+script	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<script>$/;"	function	line:19
+body	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^	<body>$/;"	function	line:27
+div	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<div class="reveal">$/;"	function	line:28
+div	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^			<div class="slides">$/;"	function	line:29
+section	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^				<section>$/;"	function	line:30
+h	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^						<h1>REST API en Express<\/h1>$/;"	function	line:31
+section	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^				<section>$/;"	function	line:33
+h	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^						<h2>REpresentational State Transfer<\/h2>$/;"	function	line:34
+br	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^						<br \/>$/;"	function	line:35
+ul	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^						<ul>$/;"	function	line:36
+li	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^							<li>Protocolo cliente\/servidor sin estado<\/li>$/;"	function	line:37
+li	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^							<li>Operaciones bien definidas<\/li>$/;"	function	line:38
+li	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^							<li>Sintaxis universal para identificar los recursos<\/li>$/;"	function	line:39
+li	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^							<li>Uso de hipermedios<\/li>$/;"	function	line:40
+section	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^				<section>$/;"	function	line:43
+h	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<h2>Un pequeña api<\/h2>$/;"	function	line:44
+div	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<div>$/;"	function	line:45
+img	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^						<img width="100%" height="100%" src="00.gif"\/>$/;"	function	line:46
+br	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<br \/>$/;"	function	line:50
+pre	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<pre><code class="hljs" contenteditable>$/;"	function	line:51
+section	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^				<section>$/;"	function	line:57
+h	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<h2>package.json<\/h2>$/;"	function	line:58
+pre	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<pre><code id="packagejson" class="hljs" contenteditable>$/;"	function	line:59
+section	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^        <section>$/;"	function	line:76
+h	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<h2>app.js<\/h2>$/;"	function	line:77
+pre	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^					<pre><code id="packagejs" class="hljs" contenteditable>$/;"	function	line:78
+script	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<script src="lib\/js\/head.min.js"><\/script>$/;"	function	line:92
+script	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<script src="js\/reveal.js"><\/script>$/;"	function	line:93
+script	/Users/Oscarin/Tareas y proyectos/Web avanzada/tareas/express-rest-apis-estay-monsalve/presentation/index.html	/^		<script>$/;"	function	line:95
