@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,20 +46,22 @@ let pets = [
   },
 ]
 
-
-app.get('/', (req, res) => {
+// Home
+app.get('/', (req, res, next) => {
   res.format({
     json: () => { res.json({}); }
   });
 });
 
-app.get('/users', (req, res) => {
+
+// Users
+app.get('/users', (req, res, next) => {
   res.format({
     json: () => { res.json(users); }
   });
 });
 
-app.post('/users', (req, res) => {
+app.post('/users', upload.array(), (req, res, next) => {
   const username = req.body.username;
   const name = req.body.name;
   const resource = { username, name };
@@ -67,7 +71,7 @@ app.post('/users', (req, res) => {
   });
 })
 
-app.get('/users/:username', (req, res) => {
+app.get('/users/:username', (req, res, next) => {
   const username = req.params.username;
   const user = users.find(item => item.username === username );
   if (!user) next();
@@ -76,23 +80,40 @@ app.get('/users/:username', (req, res) => {
   });
 });
 
-app.put('/users/:username', (req, res) => {
+app.put('/users/:username', upload.array(), (req, res, next) => {
   const username = req.params.username;
   const user = users.find(item => item.username === username);
 
-  req.body.forEach(item => user[item] = req.body[item]);
+  Object.keys(user).forEach(item => {
+    user[item] = req.body[item] ? req.body[item] : user[item];
+  });
   res.format({
     json: () => { res.json(users); }
   });
 })
 
-app.get('/pets', (req, res) => {
+app.delete('/users/:username', (req, res, next) => {
+  const username = req.params.username;
+  const user_index = users.findIndex(item => item.username === username );
+  console.log(username, user_index, users);
+
+  if (user_index < 0) next();
+  users.splice(user_index, 1);
+
+  res.format({
+    json: () => { res.json(users); }
+  });
+});
+
+
+// Pets
+app.get('/pets', (req, res, next) => {
   res.format({
     json: () => { res.json(pets); }
   });
 });
 
-app.post('/pets', (req, res) => {
+app.post('/pets', upload.array(), (req, res, next) => {
   const name = req.body.name;
   const emoji = req.body.emoji;
   const user = users.find(item => req.body.user === item.username)
@@ -107,6 +128,42 @@ app.post('/pets', (req, res) => {
   });
 })
 
+app.get('/pets/:name', (req, res, next) => {
+  const name = req.params.name;
+  const pet = pets.find(item => item.name === name );
+  if (!pet) next();
+  res.format({
+    json: () => { res.json(pet); }
+  });
+});
+
+app.put('/pets/:name', upload.array(), (req, res, next) => {
+  const name = req.params.name;
+  const pet = pets.find(item => item.name === name);
+
+  Object.keys(pet).forEach(item => {
+    pet[item] = req.body[item] ? req.body[item] : pet[item];
+  });
+  res.format({
+    json: () => { res.json(pets); }
+  });
+})
+
+app.delete('/pets/:name', (req, res, next) => {
+  const name = req.params.name;
+  const pet_index = pets.findIndex(item => item.name === name );
+
+  if (pet_index < 0) next();
+  pets.splice(pet_index, 1);
+
+  console.log(pets);
+  res.format({
+    json: () => { res.json(pets); }
+  });
+});
+
+
+// User - Pets
 app.get('/users/:username/pets', (req, res, next) => {
   const username = req.params.username;
   userPets = pets.filter(item => item.user === username);
@@ -117,12 +174,12 @@ app.get('/users/:username/pets', (req, res, next) => {
   });
 });
 
-
-app.use((req, res) => {
+// Errors
+app.use((req, res, next) => {
   res.status(404);
-  res.send({ error: "Lame, can't find that" });
+  res.send({ error: "😅 Can't find that" });
 });
 
 app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+  console.log('Example app 👂🏽  on port 3000!');
 });
