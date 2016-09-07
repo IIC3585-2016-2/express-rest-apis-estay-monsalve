@@ -8,3 +8,17 @@
  .slides h2 {
    text-transform: none;
  }
+
+ .slides code {
+   font-size: 40px;
+   line-height: 50px;
+ }
+
+ .slides section img {
+   border: 0px;
+ }
+
+ #packagejson {
+   font-size: 22px;
+   line-height: normal;
+ }
